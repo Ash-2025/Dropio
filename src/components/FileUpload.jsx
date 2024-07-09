@@ -18,12 +18,6 @@ const FileUpload = () => {
 
     const handleFileChange = (e) => {
         const file = e.target.files[0];
-        console.log(file);
-        console.log(typeof (file));
-        console.log(file.name);
-        console.log(file.lastModified);
-        console.log(file.size);
-        console.log(file.type);
         setuploadfile(file);
     }
     let extension = uploadfile?.name.substring(uploadfile?.name.lastIndexOf('.') + 1);
@@ -45,12 +39,11 @@ const FileUpload = () => {
         } finally {
             setprogress(false);
         }
-        console.log(`File uploaded successfully`);
+       
         console.log(supabase.storage.from('dropio').getPublicUrl(`/PDFs/${uploadfile.name}`))
 
         //create record to insert in the database
         let Randid = RandomId();
-        console.log(Randid);
         const record = {
             created_at: new Date().toISOString().split('T')[0],
             file_url: supabase.storage.from('dropio').getPublicUrl(`/PDFs/${uploadfile.name}`).data.publicUrl,
@@ -61,9 +54,6 @@ const FileUpload = () => {
 
         if (error) {
             console.log(`Entry error - ${error.details}`);
-            console.log(`Entry error - ${error.message}`);
-            console.log(`Entry error - ${error.hint}`);
-            console.log(`Entry error - ${error.code}`);
         }
         console.log(`Entry data - ${data}`);
         setmessage(`${Randid}`);
@@ -71,7 +61,7 @@ const FileUpload = () => {
     return (
         <>
             <main className="w-full h-[90vh] bg-purple-500 p-2">
-                <section className="w-3/4 mx-auto h-full flex flex-col gap-10">
+                <section className="w-3/4 mx-auto h-full flex flex-col gap-8">
                     <div className=" w-full h-auto flex gap-4 flex-col md:flex-row">
                         <div className="w-full max-h-fit p-2 flex justify-center items-center object-contain">
                             <img src="assets/file.png" className="mix-blend-screen h-20 w-20 md:h-1/2 md:w-auto" alt="" />
@@ -128,13 +118,13 @@ const FileUpload = () => {
                             {
                                 progress && <Loader/>
                             }
-                            {
-                                message && 
-                                <div className="text-[1.2rem] text-left font-bold font-inter text-amber-400 mb-4">
-                                    Your File is uploaded with secretID - {message}
-                                </div>
-                            }
+                            
                         </div>
+                        {
+                            message && <div className="text-[1.2rem] text-center font-bold font-inter text-purple-100">
+                            Your File is uploaded with secretID - <span className="text-black">{message}</span>
+                        </div>
+                        }
                 </section>
                 <input
                        type="file"

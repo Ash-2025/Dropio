@@ -84,7 +84,7 @@ export const GetFile = () => {
                 res && <a className='bg-black border-2 h-10 border-white max-w-max px-4 rounded-lg text-center text-white font-inter text-[1.5rem] tracking-wide' onClick={clipboard}>
                   <button>
                     {
-                      copy ? 'Copied':'Copy'
+                      copy ? 'Copied':'Copy link'
                     }
                   </button>
                 </a>
