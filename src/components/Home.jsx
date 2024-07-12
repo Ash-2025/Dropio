@@ -9,13 +9,13 @@ export default function Home() {
 
     return (
         <>
-            <main className="flex flex-col md:flex-row justify-between h-[90vh] bg-slate-900 text-white text-center overscroll-none">
+            <main className="flex flex-col md:flex-row justify-between h-svh md:h-[90vh] bg-slate-900 text-white text-center overscroll-none">
                 <section className="h-full w-full md:w-1/2 flex flex-col justify-start pt-4 gap-8 items-start">
 
-                    <h1 className="text-[6rem] font-inter pl-2 font-extrabold bg-gradient-to-r from-teal-200 to-teal-500 bg-clip-text text-transparent">
+                    <h1 className=" text-[5rem] md:text-[6rem] font-inter pl-2 font-extrabold bg-gradient-to-r from-teal-200 to-teal-500 bg-clip-text text-transparent">
                         DROPIO
                     </h1>
-                    <span className="text-[3rem] font-bold font-roboto text-left pl-2">
+                    <span className="text-[2.6rem] md:text-[3rem] font-bold font-roboto text-left pl-2">
                         FILE SHARING MADE SIMPLE
                     </span>
 
@@ -24,7 +24,7 @@ export default function Home() {
 
                     </ReactTyped>
 
-                    <div className='w-full h-auto flex justify-evenly md:gap-6 p-4 mx-auto md:justify-start'>
+                    <div className='w-full h-auto flex flex-col gap-2 md:flex-row justify-evenly md:gap-6 p-4 mx-auto md:justify-start'>
 
                         <Link to={"/upload"} className='max-w-fit flex gap-2 items-center bg-purple-600 p-2 rounded-lg'>
                             <span className='font-inter font-bold text-[1.1rem] md:text-[2rem]'>Upload File</span>
